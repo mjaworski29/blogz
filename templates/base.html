@@ -3,6 +3,10 @@
     <head>
         <style>
             .error{color:rebeccapurple;}
+            h1{color:olivedrab;}
+            label {color:indigo;}
+            h3{color:black;}
+            p{color:darkorange;}
         </style>
         <title>{{title}}</title>
     </head>
@@ -10,7 +14,17 @@
 <nav>
     <a href="/blog"> Main Blog Page</a>
     <a href="/newpost">New Blog Post</a>
+    <a href="/login">Log In</a>
+    <a href ="/logout">Log Out</a>
+    <a href = "/signup"> Sign up</a>
 </nav>
+{% with messages = get_flashed_messages(with_categories=True) %}
+    <ul>
+        {% for category,message in messages %}
+            <li class="{{category}}">{{message}}</li>
+        {% endfor %}
+    </ul>
+{% endwith %}
     {% block content %}
     {% endblock %}
 

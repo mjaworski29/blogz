@@ -1,0 +1,15 @@
+    
+    if request.method=="GET":
+    blogs = Blog.query.all()
+    id_request = request.args.get("id")
+    if id_request != None:
+        blog_post = Blog.query.get(id_request)
+        return render_template('individualblog.html', blog_post=blog_post)
+    return render_template('bloglistings.html',title="Build a Blog!", blogs=blogs)
+
+
+    if request.method =="GET":
+    owner_request = request.args.get("id")
+    if owner_request != None:
+        blog_page = User.query.get(owner_request)
+        return render_template('singleUser.html', blog_page=blog_page)
